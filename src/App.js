@@ -8,8 +8,8 @@ import Post from './Component/Post/Post';
 
 function App() {
   const [data, setData] = useState([{}]);
-
-  
+  const [keyword, setKeyword] = useState([{}]);
+  const handdleData = (arr) =>{setData(arr)}
 
 
 
@@ -18,13 +18,13 @@ function App() {
     .get('https://hn.algolia.com/api/v1/search_by_date?query=reactjs&page=0')
     .then(res => {
        // res.body, res.headers, res.status
-       //console.log(res.body)
-       setData( res.body.hits);
-       console.log(data);
+       console.log(res.body)
+       handdleData( res.body.hits);
     })
     .catch(err => {
        // err.message, err.response
     });
+    alert("useEffect");
 
   } ,[]);
   
@@ -34,8 +34,9 @@ function App() {
       <FilterSwitch/>
       <div className="PostContainer">
         {
-        data.map(el => {
-          return <Post title={el.story_title} time={el.created_at}/>          
+        data.map((el, i) => {
+          console.log(el)
+          return <Post key={i+"-"+Date.now()} title={ el.title? el.title : el.story_title} time={el.created_at}/>          
         })
         }
       </div>
