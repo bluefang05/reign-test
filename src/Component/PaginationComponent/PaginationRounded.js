@@ -15,7 +15,7 @@ export default function PaginationRounded(props) {
                 variant="outlined" 
                 shape="rounded" 
                 page={props.page} 
-                onChange={handleChange} 
+                onChange={()=>handleChange} 
             />
         </Stack>
     );
