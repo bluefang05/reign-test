@@ -15,7 +15,14 @@ export default function App() {
   const [data, setData] = useState([]);
   const [dataName, setDataName] = useState('select');
   const [pageNumber, setPageNumber] = useState(0);
+  let [booleanFav, setBooleanFav] = useState(false);
   const AppContext = createContext();
+
+  if(localStorage.getItem('favs') !== null){
+    JSON.parse(localStorage.getItem('favs'))
+  }else{
+    localStorage.setItem('fav', JSON.stringify([]));
+  }
   
   const selectOptions = [
     {
@@ -59,13 +66,19 @@ export default function App() {
     <AppContext.Provider >
       <div className="App">
         <Header />
-        <FilterSwitch/>
+        <FilterSwitch
+          setFalse={()=>setBooleanFav(false)}
+          setTrue={()=>setBooleanFav(true)}
+        />
         <SelectComponent 
           defaultValue={dataName}
           onChange={(val) => handleKeywordChange(val.target.value,pageNumber)} 
           selectOptions={selectOptions}
         />
-        <BodyPost data={data}/>
+        <BodyPost 
+          booleanFav={booleanFav}
+          data={data}
+        />
         <PaginationRounded
           page={pageNumber}
           setNumber={setPageNumber}

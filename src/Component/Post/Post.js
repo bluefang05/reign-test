@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useContext} from 'react';
+import React, {useState} from 'react';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
@@ -11,35 +11,22 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import './Post.css';
 
 export default function Post(props) {
-  let [fav, setFav] =useState([false]);
-  let favs = JSON.parse(localStorage.getItem('fav')); 
-  console.log(favs, "<--------------")
-  console.log("message", localStorage);
+  let verifyId = JSON.parse(localStorage.getItem('favs')).includes(props.id) ? true : false;
+  let [fav, setFav] = useState(verifyId);
 
-  function handleFav(){
-    setFav(!fav);
-    console.log("favs", favs)
-   let favInLS = favs.includes(props.id);
-   if(fav  ){addFav();}else{removeFav()}
+  function addFav(id){
+    let savedFavs = JSON.parse(localStorage.getItem('favs')) ?? [];
+    savedFavs.push(id);
+    localStorage.setItem('favs',JSON.stringify(savedFavs));
+    setFav(true)
   }
 
-
-  function addFav(){
-    favs.push(props.id);
-    localStorage.setItem('fav',JSON.stringify(favs)); 
+  function removeFav(id){
+    let savedFavs = JSON.parse(localStorage.getItem('favs')) ?? [];
+    savedFavs = savedFavs.filter( el => el !== id);
+    localStorage.setItem('favs',JSON.stringify(savedFavs));
+    setFav(false)
   }
-  function removeFav(){
-    favs.filter( el => el !== props.id);
-    localStorage.setItem('fav',JSON.stringify(favs));
-  }
-  
-  useEffect( ()=>{
-    
-   // console.log(favs)
-   handleFav();
-    
-
-  }, [])
 
   return (
     <Card sx={{ minWidth: 275 }}>
@@ -52,8 +39,8 @@ export default function Post(props) {
       </Typography>
     </CardContent>
     <CardActions>
-      <Button onClick={()=>handleFav()}>
-        {fav ? <FavoriteIcon/> : <FavoriteBorderIcon/>}
+      <Button onClick={fav ? ()=>removeFav(props.id) : ()=>addFav(props.id)}>
+        {(fav || verifyId) ? <FavoriteIcon/> : <FavoriteBorderIcon/>}
       </Button>
     </CardActions>
   </Card>
