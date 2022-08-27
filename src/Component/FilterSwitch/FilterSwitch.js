@@ -5,7 +5,7 @@ import "./FilteredSwitch.css";
 
 export default function FilterSwitch() {
   return (
-    <Stack spacing={0} direction="row">
+    <Stack spacing={0} direction="row" className="button-options">
       <Button variant="outlined">All</Button>
       <Button variant="outlined">My faves</Button>
     </Stack>
