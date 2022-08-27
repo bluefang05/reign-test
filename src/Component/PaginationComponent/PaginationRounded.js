@@ -5,7 +5,6 @@ import Stack from '@mui/material/Stack';
 export default function PaginationRounded(props) {
     const handleChange = (event, value) => {
         props.setNumber(value);
-        props.handleData();
     };
 
     return (
@@ -15,7 +14,7 @@ export default function PaginationRounded(props) {
                 variant="outlined" 
                 shape="rounded" 
                 page={props.page} 
-                onChange={()=>handleChange} 
+                onChange={handleChange} 
             />
         </Stack>
     );

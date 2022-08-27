@@ -67,7 +67,6 @@ export default function App() {
       <PaginationRounded
         page={pageNumber}
         setNumber={setPageNumber}
-        handleData={handleData(dataName,pageNumber)}
       />
     </div>
   );
