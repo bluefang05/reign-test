@@ -1,9 +1,10 @@
 import React from 'react';
 import Post from '../Post/Post';
 import Box from '@mui/material/Box';
+import './BodyPost.css'
 
 export default function BodyPost(props){
-    return <Box>
+    return <Box className="body-post">
         {props.data.map((el, i) => (
             <Post 
                 created_at={el.created_at}

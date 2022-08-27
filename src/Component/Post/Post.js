@@ -18,7 +18,7 @@ export default function Post(props) {
   return (
     <Card sx={{ minWidth: 275 }}>
     <CardContent>
-      <Typography sx={{ fontSize: 14 }} variant="h5" color="text.secondary" gutterBottom>
+      <Typography sx={{ fontSize: 11 }} variant="h6" color="text.secondary" gutterBottom>
         <AccessTimeIcon/> {ago(props.time )+ " by " + props.author }
       </Typography>
       <Typography sx={{ mb: 1.5 }} color="text.secondary">
