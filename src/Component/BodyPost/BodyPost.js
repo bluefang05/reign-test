@@ -1,17 +1,23 @@
-import React from 'react';
+import React, { createContext } from 'react';
 import Post from '../Post/Post';
 import Box from '@mui/material/Box';
-import './BodyPost.css'
+import './BodyPost.css';
+
+const PostContext = createContext();
 
 export default function BodyPost(props){
-    return <Box className="body-post">
-        {props.data.map((el, i) => (
+    const favoriteCards = createContext([]);
+    return <PostContext.Provider value={favoriteCards}>
+    <Box className="body-post">
+        {props.data.map((element, key) => (
             <Post 
-                created_at={el.created_at}
-                author={el.author} 
-                key={i+"-"+Date.now()} 
-                title={ el.title? el.title : el.story_title} time={el.created_at}
+                created_at={element.created_at}
+                author={element.author} 
+                key={key+"-"+Date.now()} 
+                title={ element.title? element.title : element.story_title} time={element.created_at}
+                id={element.objectID}
             /> 
         ))}
     </Box>
+    </PostContext.Provider>
 }

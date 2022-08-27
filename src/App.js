@@ -1,5 +1,5 @@
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, createContext  } from 'react';
 import './App.css';
 import Header from './Component/Header/Header';
 import FilterSwitch from './Component/FilterSwitch/FilterSwitch';
@@ -15,7 +15,8 @@ export default function App() {
   const [data, setData] = useState([]);
   const [dataName, setDataName] = useState('select');
   const [pageNumber, setPageNumber] = useState(0);
-
+  const AppContext = createContext();
+  
   const selectOptions = [
     {
       value: 'reactjs',
@@ -55,19 +56,21 @@ export default function App() {
   },[dataName,pageNumber]);
   
   return (
-    <div className="App">
-      <Header />
-      <FilterSwitch/>
-      <SelectComponent 
-        defaultValue={dataName}
-        onChange={(val) => handleKeywordChange(val.target.value,pageNumber)} 
-        selectOptions={selectOptions}
-      />
-      <BodyPost data={data}/>
-      <PaginationRounded
-        page={pageNumber}
-        setNumber={setPageNumber}
-      />
-    </div>
+    <AppContext.Provider >
+      <div className="App">
+        <Header />
+        <FilterSwitch/>
+        <SelectComponent 
+          defaultValue={dataName}
+          onChange={(val) => handleKeywordChange(val.target.value,pageNumber)} 
+          selectOptions={selectOptions}
+        />
+        <BodyPost data={data}/>
+        <PaginationRounded
+          page={pageNumber}
+          setNumber={setPageNumber}
+        />
+      </div>
+    </AppContext.Provider>
   );
 }
