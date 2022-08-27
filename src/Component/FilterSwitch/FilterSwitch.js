@@ -1,11 +1,13 @@
 import React from "react";
+import Stack from '@mui/material/Stack';
+import Button from '@mui/material/Button';
 import "./FilteredSwitch.css";
-function FilterSwitch() {
+
+export default function FilterSwitch() {
   return (
-    <div>
-  
-    </div>
+    <Stack spacing={0} direction="row">
+      <Button variant="outlined">All</Button>
+      <Button variant="outlined">My faves</Button>
+    </Stack>
   );
 }
-
-export default FilterSwitch;

@@ -1,0 +1,28 @@
+import React from 'react';
+import Box from '@mui/material/Box';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
+
+export default function SelectComponent(props){
+    return (
+      <Box sx={{ minWidth: 120 }}>
+        <FormControl fullWidth>
+          <Select
+            labelId="demo-simple-select-label"
+            id="demo-simple-select"
+            defaultValue={props.defaultValue}
+            value={props.defaultValue}
+            label="Age"
+            onChange={props.onChange}
+          >
+            {props.selectOptions.map((item, key) => (
+              <MenuItem key={key} value={item.value}>
+                <img src={item.icon} alt={item.icon}/> {item.valueName}
+              </MenuItem>
+            ))}
+          </Select>
+        </FormControl>
+      </Box>
+    )
+}
