@@ -7,38 +7,49 @@ import superagent from "superagent";
 import Post from './Component/Post/Post';
 
 function App() {
-  const [data, setData] = useState([{}]);
-  const [keyword, setKeyword] = useState([{}]);
-  const handdleData = (arr) =>{setData(arr)}
+  const [data, setData] = useState([]);
 
+  const [proof, setProof] = useState('reactjs');
 
-
-  useEffect(()=>{
+  const handleData = (str) =>{
     superagent
-    .get('https://hn.algolia.com/api/v1/search_by_date?query=reactjs&page=0')
+    .get(`https://hn.algolia.com/api/v1/search_by_date?query=${str}&page=0`)
     .then(res => {
-       // res.body, res.headers, res.status
-       console.log(res.body)
-       handdleData( res.body.hits);
+       console.log(`https://hn.algolia.com/api/v1/search_by_date?query=${str}&page=0`)
+       setData(res.body.hits);
     })
     .catch(err => {
-       // err.message, err.response
+       console.log(err)
     });
-    alert("useEffect");
+  }
 
-  } ,[]);
+  const handleKeywordChange= (str)=>{
+    setProof(str);
+    handleData(str);
+  }
+
+  useEffect(()=>{
+    handleData(proof);
+  },[]);
   
   return (
     <div className="App">
       <Header />
       <FilterSwitch/>
+      <select onChange={(val) => handleKeywordChange(val.target.value)} defaultValue={'reactjs'}>
+        <option value='reactjs'>reactjs</option>
+        <option value='angular'>angular</option>
+        <option value='vuejs'>vuejs</option>
+      </select>
+
       <div className="PostContainer">
-        {
-        data.map((el, i) => {
-          console.log(el)
-          return <Post key={i+"-"+Date.now()} title={ el.title? el.title : el.story_title} time={el.created_at}/>          
-        })
-        }
+        {data.map((el, i) => {
+          return <Post 
+            author={el.author} 
+            key={i+"-"+Date.now()} 
+            title={ el.title? el.title : el.story_title} time={el.created_at}
+        />          
+        })}
       </div>
     </div>
   );
