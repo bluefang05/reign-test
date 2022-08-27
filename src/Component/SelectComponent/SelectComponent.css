@@ -1,0 +1,28 @@
+.select-body {
+    width: calc(100vw - 300px);
+    margin-bottom: 38px;
+}
+
+.select-body .MuiInputBase-root.MuiOutlinedInput-root.MuiInputBase-colorPrimary.MuiInputBase-formControl.css-1yk1gt9-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root {
+    width: 240px;
+    height: 32px;
+    border-radius: 4px;
+    border: solid 1px #2e2e2e;
+    background-color: #fff;
+}
+
+.MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded.MuiPaper-elevation1.MuiMenu-paper.MuiPaper-elevation8.MuiPopover-paper.css-1poimk-MuiPaper-root-MuiMenu-paper-MuiPaper-root-MuiPopover-paper {
+    top: 306px !important;
+}
+
+.MuiButtonBase-root.MuiMenuItem-root.MuiMenuItem-gutters.css-kk1bwy-MuiButtonBase-root-MuiMenuItem-root {
+    display: flex;
+    gap: 10px;
+    padding: 10px;
+}
+
+#demo-simple-select {
+    display: flex;
+    align-content: center;
+    gap: 10px;
+}

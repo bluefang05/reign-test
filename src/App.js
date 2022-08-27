@@ -13,7 +13,7 @@ import PaginationRounded from './Component/PaginationComponent/PaginationRounded
 
 export default function App() {
   const [data, setData] = useState([]);
-  const [dataName, setDataName] = useState('reactjs');
+  const [dataName, setDataName] = useState('select');
   const [pageNumber, setPageNumber] = useState(0);
 
   const selectOptions = [
@@ -51,7 +51,7 @@ export default function App() {
   }
 
   useEffect(()=>{
-    handleData(dataName,pageNumber);
+    handleData(dataName === 'select' ? 'reactjs' : dataName ,pageNumber);
   },[dataName,pageNumber]);
   
   return (
