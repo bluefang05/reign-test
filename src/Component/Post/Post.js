@@ -1,4 +1,9 @@
 import React, {useState} from 'react';
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
 import  {ago} from 'time-ago';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import FavoriteIcon from '@mui/icons-material/Favorite';
@@ -11,18 +16,20 @@ export default function Post(props) {
   if(!(localStorage.length)) localStorage.setItem('arr', [])
 
   return (
-    <div className='post'>
-        <div className='post-content'>
-            <div className='post-time'>
-              <AccessTimeIcon/> {ago(props.time )+ " by " + props.author }
-            </div>
-            <div className='post-title'>
-              {props.title}
-            </div>
-        </div>
-        <div className='post-fav'onClick={()=>setFav(!fav)}>
-          {fav ? <FavoriteIcon/> : <FavoriteBorderIcon/>}
-        </div>
-    </div>
+    <Card sx={{ minWidth: 275 }}>
+    <CardContent>
+      <Typography sx={{ fontSize: 14 }} variant="h5" color="text.secondary" gutterBottom>
+        <AccessTimeIcon/> {ago(props.time )+ " by " + props.author }
+      </Typography>
+      <Typography sx={{ mb: 1.5 }} color="text.secondary">
+        {props.title}
+      </Typography>
+    </CardContent>
+    <CardActions>
+      <Button onClick={()=>setFav(!fav)}>
+        {fav ? <FavoriteIcon/> : <FavoriteBorderIcon/>}
+      </Button>
+    </CardActions>
+  </Card>
   )
 }

@@ -1,4 +1,12 @@
-.PostContainer{
- display: flex;
- flex-wrap: wrap;
+.App {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.App > div,
+.App > header > img {
+    padding-left: 150px;
+    padding-right: 150px;
 }
