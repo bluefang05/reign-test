@@ -35,7 +35,7 @@ export default function Post(props) {
         <AccessTimeIcon/> {ago(props.time )+ " by " + props.author }
       </Typography>
       <Typography onClick={()=>{window.open(props.url, '_blank').focus();}} sx={{ mb: 1.5 }} color="text.secondary">
-        {props.title} {props.id}
+        {props.title}
       </Typography>
     </CardContent>
     <CardActions>

@@ -22,6 +22,8 @@ export default function App() {
   }else{
     localStorage.setItem('favs', JSON.stringify([]));
   }
+
+  
   
   const selectOptions = [
     {
