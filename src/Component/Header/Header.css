@@ -9,3 +9,11 @@
     padding-top: 44px;
     padding-bottom: 42px;
 }
+
+@media  (max-width: 900px) {
+    .test-header {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}

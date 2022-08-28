@@ -26,3 +26,12 @@
     align-content: center;
     gap: 10px;
 }
+
+/* @media  (max-width: 900px) {
+    .select-body{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 80%;
+    }
+} */

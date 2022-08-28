@@ -10,3 +10,11 @@
     padding-left: 150px;
     padding-right: 150px;
 }
+
+
+/* @media  (max-width: 900px) {
+
+    .App  .body-post{
+        padding: 0;
+    }
+} */

@@ -1,5 +1,5 @@
 
-import { useState, useEffect, createContext  } from 'react';
+import { useState, useEffect } from 'react';
 import './App.css';
 import Header from './Component/Header/Header';
 import FilterSwitch from './Component/FilterSwitch/FilterSwitch';
@@ -16,12 +16,11 @@ export default function App() {
   const [dataName, setDataName] = useState('select');
   const [pageNumber, setPageNumber] = useState(0);
   let [booleanFav, setBooleanFav] = useState(false);
-  const AppContext = createContext();
 
   if(localStorage.getItem('favs') !== null){
     JSON.parse(localStorage.getItem('favs'))
   }else{
-    localStorage.setItem('fav', JSON.stringify([]));
+    localStorage.setItem('favs', JSON.stringify([]));
   }
   
   const selectOptions = [

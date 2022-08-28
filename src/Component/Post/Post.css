@@ -51,3 +51,10 @@
     gap: 8px;
     display: grid;
 }
+
+@media (max-width: 900px) {
+    .body-post > div {
+        width: 80%;
+    }
+    
+}

@@ -14,3 +14,16 @@
 .button-options > button:focus {
     border: solid 1px #1797ff;
 }
+
+@media  (max-width: 900px) {
+    button.MuiButtonBase-root:nth-child(2){
+        font-size: 10px;
+    }
+
+    #root > div > div.select-body,
+    #root > div > div.select-body.MuiBox-root.css-ece9u5 > div{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
