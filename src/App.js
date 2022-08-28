@@ -63,7 +63,6 @@ export default function App() {
   },[dataName,pageNumber]);
   
   return (
-    <AppContext.Provider >
       <div className="App">
         <Header />
         <FilterSwitch
@@ -84,6 +83,5 @@ export default function App() {
           setNumber={setPageNumber}
         />
       </div>
-    </AppContext.Provider>
   );
 }

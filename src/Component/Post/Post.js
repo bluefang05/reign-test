@@ -34,7 +34,7 @@ export default function Post(props) {
       <Typography sx={{ fontSize: 11 }} variant="h6" color="text.secondary" gutterBottom>
         <AccessTimeIcon/> {ago(props.time )+ " by " + props.author }
       </Typography>
-      <Typography sx={{ mb: 1.5 }} color="text.secondary">
+      <Typography onClick={()=>{window.open(props.url, '_blank').focus();}} sx={{ mb: 1.5 }} color="text.secondary">
         {props.title} {props.id}
       </Typography>
     </CardContent>
